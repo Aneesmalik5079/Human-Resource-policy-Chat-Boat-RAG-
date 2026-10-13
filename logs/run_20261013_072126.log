@@ -1,0 +1,28 @@
+2026-10-13 07:21:46,562 | INFO | hr_assistant.pipeline | Building HR assistant...
+2026-10-13 07:21:46,562 | INFO | hr_assistant.tracing | LangSmith tracing ENABLED - project 'hr_policy_assistant', traces at https://smith.langchain.com
+2026-10-13 07:21:47,765 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy/exists "HTTP/1.1 200 OK"
+2026-10-13 07:21:47,766 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-10-13 07:21:47,778 | INFO | hr_assistant.pipeline | Qdrant Cloud collection already exists, reusing it
+2026-10-13 07:21:47,778 | INFO | hr_assistant.vector_store | Connecting to existing Qdrant collection 'HR_policy'
+2026-10-13 07:21:47,779 | INFO | hr_assistant.embeddings | Initializing embeddings model 'jina-embeddings-v2-base-en'
+2026-10-13 07:21:48,785 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-10-13 07:21:48,786 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy "HTTP/1.1 200 OK"
+2026-10-13 07:21:50,017 | INFO | hr_assistant.vector_store | Creating retriever with top_k=3
+2026-10-13 07:21:50,029 | INFO | hr_assistant.llm | Initializing LLM via Portkey
+2026-10-13 07:21:50,030 | INFO | hr_assistant.gateway | Routing LLM calls through Portkey (provider=@hrpolicy)
+2026-10-13 07:21:50,296 | INFO | hr_assistant.agent | Creating HR agent with 1 tool(s)
+2026-10-13 07:21:50,307 | INFO | hr_assistant.agent | HR agent ready
+2026-10-13 07:21:50,308 | INFO | hr_assistant.pipeline | HR assistant is ready to take questions
+2026-10-13 07:21:58,432 | INFO | __main__ | === Streamlit run: new question received ===
+2026-10-13 07:21:58,437 | INFO | hr_assistant.pipeline | User question: hi
+2026-10-13 07:21:59,642 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:22:02,311 | INFO | httpx2 | HTTP Request: POST https://api.portkey.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:22:02,375 | INFO | hr_assistant.tools | search_hr_policy called with query: What is the policy on leave?
+2026-10-13 07:22:03,837 | INFO | httpx | HTTP Request: POST https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy/points/query "HTTP/1.1 200 OK"
+2026-10-13 07:22:03,843 | INFO | hr_assistant.tools | Found 3 matching chunk(s)
+2026-10-13 07:22:04,393 | INFO | httpx2 | HTTP Request: POST https://api.portkey.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:22:04,404 | INFO | hr_assistant.pipeline | Final answer: Hello! 👋 How can I help you today?
+2026-10-13 07:22:04,682 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:22:18,553 | INFO | __main__ | === Streamlit run: new question received ===
+2026-10-13 07:22:18,559 | INFO | hr_assistant.pipeline | User question: how to make coffee
+2026-10-13 07:22:18,883 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 413 Payload Too Large"

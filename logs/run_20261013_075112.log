@@ -1,0 +1,17 @@
+2026-10-13 07:51:34,961 | INFO | hr_assistant.pipeline | Building HR assistant...
+2026-10-13 07:51:34,962 | INFO | hr_assistant.tracing | LangSmith tracing ENABLED - project 'hr_policy_assistant', traces at https://smith.langchain.com
+2026-10-13 07:51:35,962 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-10-13 07:51:35,963 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy/exists "HTTP/1.1 200 OK"
+2026-10-13 07:51:35,974 | INFO | hr_assistant.pipeline | Qdrant Cloud collection already exists, reusing it
+2026-10-13 07:51:35,974 | INFO | hr_assistant.vector_store | Connecting to existing Qdrant collection 'HR_policy'
+2026-10-13 07:51:35,975 | INFO | hr_assistant.embeddings | Initializing embeddings model 'jina-embeddings-v2-base-en'
+2026-10-13 07:51:37,297 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-10-13 07:51:37,298 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy "HTTP/1.1 200 OK"
+2026-10-13 07:51:41,552 | INFO | hr_assistant.vector_store | Creating retriever with top_k=3
+2026-10-13 07:51:41,561 | INFO | hr_assistant.llm | Initializing LLM via Portkey
+2026-10-13 07:51:41,840 | INFO | hr_assistant.agent | Creating HR agent with 1 tool(s)
+2026-10-13 07:51:41,851 | INFO | hr_assistant.agent | HR agent ready
+2026-10-13 07:51:41,852 | INFO | hr_assistant.pipeline | HR assistant is ready to take questions
+2026-10-13 07:51:52,906 | INFO | __main__ | === Streamlit run: new question received ===
+2026-10-13 07:51:52,911 | INFO | hr_assistant.pipeline | User question: hi who are you
+2026-10-13 07:51:53,882 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"

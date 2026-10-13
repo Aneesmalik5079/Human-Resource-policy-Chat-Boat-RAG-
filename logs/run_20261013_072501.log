@@ -1,0 +1,55 @@
+2026-10-13 07:25:18,190 | INFO | hr_assistant.pipeline | Building HR assistant...
+2026-10-13 07:25:18,190 | INFO | hr_assistant.tracing | LangSmith tracing ENABLED - project 'hr_policy_assistant', traces at https://smith.langchain.com
+2026-10-13 07:25:19,320 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-10-13 07:25:19,321 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy/exists "HTTP/1.1 200 OK"
+2026-10-13 07:25:19,326 | INFO | hr_assistant.pipeline | Qdrant Cloud collection already exists, reusing it
+2026-10-13 07:25:19,326 | INFO | hr_assistant.vector_store | Connecting to existing Qdrant collection 'HR_policy'
+2026-10-13 07:25:19,327 | INFO | hr_assistant.embeddings | Initializing embeddings model 'jina-embeddings-v2-base-en'
+2026-10-13 07:25:20,352 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-10-13 07:25:20,352 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy "HTTP/1.1 200 OK"
+2026-10-13 07:25:21,542 | INFO | hr_assistant.vector_store | Creating retriever with top_k=3
+2026-10-13 07:25:21,554 | INFO | hr_assistant.llm | Initializing LLM via Portkey
+2026-10-13 07:25:21,554 | INFO | hr_assistant.gateway | Routing LLM calls through Portkey (provider=@hrpolicy)
+2026-10-13 07:25:21,815 | INFO | hr_assistant.agent | Creating HR agent with 1 tool(s)
+2026-10-13 07:25:21,827 | INFO | hr_assistant.agent | HR agent ready
+2026-10-13 07:25:21,828 | INFO | hr_assistant.pipeline | HR assistant is ready to take questions
+2026-10-13 07:25:41,898 | INFO | __main__ | === Streamlit run: new question received ===
+2026-10-13 07:25:41,904 | INFO | hr_assistant.pipeline | User question: tell me about sick leaves
+2026-10-13 07:25:42,902 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:25:44,815 | INFO | httpx2 | HTTP Request: POST https://api.portkey.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:25:44,868 | INFO | hr_assistant.tools | search_hr_policy called with query: sick leaves
+2026-10-13 07:25:46,346 | INFO | httpx | HTTP Request: POST https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy/points/query "HTTP/1.1 200 OK"
+2026-10-13 07:25:46,351 | INFO | hr_assistant.tools | Found 3 matching chunk(s)
+2026-10-13 07:25:47,001 | INFO | httpx2 | HTTP Request: POST https://api.portkey.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:25:47,010 | INFO | hr_assistant.pipeline | Final answer: Sure! Here’s what the company’s policy says about sick leave:
+
+- **Entitlement:** Full‑time employees are granted **10 paid sick days per calendar year**.  
+- **Documentation:** If you’re absent for **more than two consecutive days**, a medical certificate must be submitted.  
+- **Request Process:** For all sick leave, just let your manager know and add the request in the HR portal—no special steps beyond the usual notice.
+
+If you have any more questions or need help filing a request, just let me know!
+2026-10-13 07:25:47,277 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:26:09,786 | INFO | __main__ | === Streamlit run: new question received ===
+2026-10-13 07:26:09,790 | INFO | hr_assistant.pipeline | User question: how to make a coffee
+2026-10-13 07:26:10,829 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:26:11,850 | INFO | httpx2 | HTTP Request: POST https://api.portkey.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:26:11,862 | INFO | hr_assistant.tools | search_hr_policy called with query: how to make a coffee
+2026-10-13 07:26:13,589 | INFO | httpx | HTTP Request: POST https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy/points/query "HTTP/1.1 200 OK"
+2026-10-13 07:26:13,592 | INFO | hr_assistant.tools | Found 3 matching chunk(s)
+2026-10-13 07:26:14,215 | INFO | httpx2 | HTTP Request: POST https://api.portkey.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:26:14,223 | INFO | hr_assistant.pipeline | Final answer: I’m sorry, I don’t have that information.
+2026-10-13 07:26:14,529 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:26:31,607 | INFO | __main__ | === Streamlit run: new question received ===
+2026-10-13 07:26:31,613 | INFO | hr_assistant.pipeline | User question: how many days an employee get sick leaves a year
+2026-10-13 07:26:31,900 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-10-13 07:26:31,902 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 20.000000 seconds
+2026-10-13 07:26:52,501 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:26:53,549 | INFO | httpx2 | HTTP Request: POST https://api.portkey.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:26:53,564 | INFO | hr_assistant.tools | search_hr_policy called with query: How many days an employee get sick leaves a year
+2026-10-13 07:26:55,164 | INFO | httpx | HTTP Request: POST https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy/points/query "HTTP/1.1 200 OK"
+2026-10-13 07:26:55,167 | INFO | hr_assistant.tools | Found 3 matching chunk(s)
+2026-10-13 07:26:55,749 | INFO | httpx2 | HTTP Request: POST https://api.portkey.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:26:55,763 | INFO | hr_assistant.pipeline | Final answer: Employees are entitled to **10 paid sick days per calendar year**.
+2026-10-13 07:26:55,913 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-10-13 07:26:55,915 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 20.000000 seconds
+2026-10-13 07:27:16,362 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"

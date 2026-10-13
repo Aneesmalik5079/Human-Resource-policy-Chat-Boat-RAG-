@@ -1,0 +1,45 @@
+2026-10-13 07:09:34,652 | ERROR | asyncio | Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\asyncio\proactor_events.py", line 166, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2026-10-13 07:10:59,019 | INFO | hr_assistant.pipeline | Building HR assistant...
+2026-10-13 07:10:59,023 | INFO | hr_assistant.tracing | LangSmith tracing ENABLED - project 'hr_policy_assistant', traces at https://smith.langchain.com
+2026-10-13 07:11:00,237 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy/exists "HTTP/1.1 200 OK"
+2026-10-13 07:11:00,240 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-10-13 07:11:00,270 | INFO | hr_assistant.pipeline | No Qdrant Cloud collection found, building one from scratch
+2026-10-13 07:11:00,271 | INFO | hr_assistant.document_loader | Loading document from 'data\HR_policy.txt'
+2026-10-13 07:11:00,319 | INFO | hr_assistant.document_loader | Loaded 1 document(s)
+2026-10-13 07:11:00,332 | INFO | hr_assistant.splitter | Split document(s) into 9 chunk(s)
+2026-10-13 07:11:00,334 | INFO | hr_assistant.vector_store | Embedding 9 chunk(s) and uploading to Qdrant collection 'HR_policy'...
+2026-10-13 07:11:00,335 | INFO | hr_assistant.embeddings | Initializing embeddings model 'jina-embeddings-v2-base-en'
+2026-10-13 07:11:01,300 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy/exists "HTTP/1.1 200 OK"
+2026-10-13 07:11:01,420 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-10-13 07:11:04,338 | INFO | httpx | HTTP Request: PUT https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy "HTTP/1.1 200 OK"
+2026-10-13 07:11:05,848 | INFO | httpx | HTTP Request: PUT https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy/points?wait=true "HTTP/1.1 200 OK"
+2026-10-13 07:11:05,853 | INFO | hr_assistant.vector_store | Uploaded to Qdrant collection 'HR_policy'
+2026-10-13 07:11:05,854 | INFO | hr_assistant.vector_store | Creating retriever with top_k=3
+2026-10-13 07:11:05,869 | INFO | hr_assistant.llm | Initializing LLM via Portkey
+2026-10-13 07:11:05,869 | INFO | hr_assistant.gateway | Routing LLM calls through Portkey (provider=@hrpolicy)
+2026-10-13 07:11:09,095 | INFO | hr_assistant.agent | Creating HR agent with 1 tool(s)
+2026-10-13 07:11:09,113 | INFO | hr_assistant.agent | HR agent ready
+2026-10-13 07:11:09,114 | INFO | hr_assistant.pipeline | HR assistant is ready to take questions
+2026-10-13 07:12:40,215 | INFO | __main__ | === Streamlit run: new question received ===
+2026-10-13 07:12:40,239 | INFO | hr_assistant.pipeline | User question: hi
+2026-10-13 07:12:41,641 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:12:43,573 | INFO | httpx2 | HTTP Request: POST https://api.portkey.ai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-10-13 07:14:43,252 | ERROR | asyncio | Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\asyncio\proactor_events.py", line 166, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host

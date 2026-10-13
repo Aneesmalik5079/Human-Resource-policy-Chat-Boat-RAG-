@@ -1,0 +1,58 @@
+2026-10-13 07:54:24,607 | INFO | hr_assistant.pipeline | Building HR assistant...
+2026-10-13 07:54:24,608 | INFO | hr_assistant.tracing | LangSmith tracing ENABLED - project 'hr_policy_assistant', traces at https://smith.langchain.com
+2026-10-13 07:54:25,748 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy/exists "HTTP/1.1 200 OK"
+2026-10-13 07:54:25,750 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-10-13 07:54:25,761 | INFO | hr_assistant.pipeline | Qdrant Cloud collection already exists, reusing it
+2026-10-13 07:54:25,761 | INFO | hr_assistant.vector_store | Connecting to existing Qdrant collection 'HR_policy'
+2026-10-13 07:54:25,762 | INFO | hr_assistant.embeddings | Initializing embeddings model 'jina-embeddings-v2-base-en'
+2026-10-13 07:54:26,810 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy "HTTP/1.1 200 OK"
+2026-10-13 07:54:26,833 | INFO | httpx | HTTP Request: GET https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-10-13 07:54:27,788 | INFO | hr_assistant.vector_store | Creating retriever with top_k=3
+2026-10-13 07:54:27,802 | INFO | hr_assistant.llm | Initializing LLM via Portkey
+2026-10-13 07:54:28,057 | INFO | hr_assistant.gateway | Configuring LLM fallback: @hrpolicy -> @hrpolicybackup
+2026-10-13 07:54:28,102 | INFO | hr_assistant.agent | Creating HR agent with 1 tool(s)
+2026-10-13 07:54:28,127 | INFO | hr_assistant.agent | HR agent ready
+2026-10-13 07:54:28,129 | INFO | hr_assistant.pipeline | HR assistant is ready to take questions
+2026-10-13 07:54:43,646 | INFO | __main__ | === Streamlit run: new question received ===
+2026-10-13 07:54:43,651 | INFO | hr_assistant.pipeline | User question: hi who are you
+2026-10-13 07:54:44,480 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:54:46,632 | INFO | httpx2 | HTTP Request: POST https://api.portkey.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:54:46,672 | INFO | hr_assistant.tools | search_hr_policy called with query: who are you
+2026-10-13 07:54:48,272 | INFO | httpx | HTTP Request: POST https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy/points/query "HTTP/1.1 200 OK"
+2026-10-13 07:54:48,283 | INFO | hr_assistant.tools | Found 3 matching chunk(s)
+2026-10-13 07:54:48,998 | INFO | httpx2 | HTTP Request: POST https://api.portkey.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:54:49,012 | INFO | hr_assistant.pipeline | Final answer: Hi! I'm your friendly HR assistant here to help you with any questions about company policies, procedures, and benefits. If there's something specific you'd like to know—like leave, holidays, or the exit process—just let me know!
+2026-10-13 07:54:49,392 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:55:08,420 | INFO | __main__ | === Streamlit run: new question received ===
+2026-10-13 07:55:08,424 | INFO | hr_assistant.pipeline | User question: tell me about company holidays
+2026-10-13 07:55:09,015 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:55:09,698 | INFO | httpx2 | HTTP Request: POST https://api.portkey.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:55:09,711 | INFO | hr_assistant.tools | search_hr_policy called with query: company holidays
+2026-10-13 07:55:11,310 | INFO | httpx | HTTP Request: POST https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy/points/query "HTTP/1.1 200 OK"
+2026-10-13 07:55:11,314 | INFO | hr_assistant.tools | Found 3 matching chunk(s)
+2026-10-13 07:55:12,016 | INFO | httpx2 | HTTP Request: POST https://api.portkey.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:55:12,029 | INFO | hr_assistant.pipeline | Final answer: Here’s what the handbook says about company holidays:
+
+- **Number of Holidays:** The company observes **12 public holidays** each calendar year.  
+- **Holiday Calendar:** HR publishes an official holiday calendar at the start of the year. It lists the dates and any company‑specific observances.  
+- **Working on a Holiday:** If you’re required to work on one of those public holidays, you’ll receive **compensatory leave** (time off at a later date) to make up for the day worked.  
+- **Planning:** If you need to schedule time off around a public holiday, just submit your request through the HR portal like any other leave—just be sure you do it in advance so we can keep the schedule smooth.
+
+If you need the specific dates for this year or help with the holiday calendar, let me know and I can pull it up for you!
+2026-10-13 07:55:12,133 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-10-13 07:55:12,136 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 20.000000 seconds
+2026-10-13 07:55:32,813 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:55:46,169 | INFO | __main__ | === Streamlit run: new question received ===
+2026-10-13 07:55:46,175 | INFO | hr_assistant.pipeline | User question: how to make pizaa
+2026-10-13 07:55:46,433 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-10-13 07:55:46,434 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 20.000000 seconds
+2026-10-13 07:56:07,434 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:56:08,597 | INFO | httpx2 | HTTP Request: POST https://api.portkey.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:56:08,610 | INFO | hr_assistant.tools | search_hr_policy called with query: pizza
+2026-10-13 07:56:10,285 | INFO | httpx | HTTP Request: POST https://432fd579-fd34-4ae6-97a1-d92c594e8ec6.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HR_policy/points/query "HTTP/1.1 200 OK"
+2026-10-13 07:56:10,289 | INFO | hr_assistant.tools | Found 3 matching chunk(s)
+2026-10-13 07:56:10,909 | INFO | httpx2 | HTTP Request: POST https://api.portkey.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-13 07:56:10,921 | INFO | hr_assistant.pipeline | Final answer: I’m sorry, but I don’t have information on that.
+2026-10-13 07:56:11,018 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-10-13 07:56:11,020 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 20.000000 seconds
+2026-10-13 07:56:31,693 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
